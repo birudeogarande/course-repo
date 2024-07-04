@@ -3,17 +3,26 @@ package com.saatvik.course.controller;
 import com.saatvik.course.exception.CourseNotFoundException;
 import com.saatvik.course.model.Course;
 import com.saatvik.course.service.CourseService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/course")
+@Slf4j
 public class CourseController {
 
     @Autowired
     private CourseService courseService;
+
+    @Value("${JAVA_HOME}")
+    String javaHome;
+
+
+
     @GetMapping("/{courseId}")
     public Course getCourse(@PathVariable Integer courseId) throws CourseNotFoundException {
         return courseService.findCourseById(courseId);
@@ -21,11 +30,15 @@ public class CourseController {
 
     @GetMapping("/all")
     public List<Course> getAllCourse()  {
+
+        log.info(javaHome);
         return courseService.findAllCourse();
     }
 
     @PutMapping("/update/{courseId}")
     public Course updateCourse(@PathVariable Integer courseId, @RequestBody Course course) throws CourseNotFoundException {
+
+
         return courseService.updateCourseById(courseId, course);
     }
 
