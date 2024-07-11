@@ -1,9 +1,9 @@
-FROM openjdk:21
+FROM openjdk:17
 
 WORKDIR /app
 
-COPY /target/course-0.0.1-SNAPSHOT.jar /app/course.jar
+COPY /target/course-service.jar /app/course-service.jar
 
 EXPOSE 8081
 
-CMD ["java", "-jar", "course.jar"]
+CMD ["java", "-jar", "course-service.jar"]
