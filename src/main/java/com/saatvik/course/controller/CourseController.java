@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Random;
 
 @RestController
 @RequestMapping("/course")
@@ -28,6 +29,18 @@ public class CourseController {
     public List<Course> getAllCourse()  {
         return courseService.findAllCourse();
     }
+    @GetMapping("/dummy/all")
+    public List<Course> getAllDummyCourse()  {
+        Random random = new Random(100);
+        return List.of(
+                new Course(random.nextInt(),"Java", random.nextDouble()),
+                new Course(random.nextInt(),"REST API", random.nextDouble()),
+                new Course(random.nextInt(),"Spring boot", random.nextDouble())
+
+        );
+    }
+
+
 
     @PutMapping("/update/{courseId}")
     public Course updateCourse(@PathVariable Integer courseId, @RequestBody Course course) throws CourseNotFoundException {

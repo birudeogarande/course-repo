@@ -14,11 +14,12 @@ public class CourseService {
 
     public Course findCourseById(Integer courseId) throws CourseNotFoundException {
         return courseList.stream()
-                .filter(course -> course.getCourseId()==courseId)
+                .filter(course -> Objects.equals(course.getCourseId(), courseId))
                 .findFirst().orElseThrow(()->new CourseNotFoundException(NOT_FOUND));
     }
 
     public List<Course> findAllCourse() {
+
         return courseList;
     }
 
