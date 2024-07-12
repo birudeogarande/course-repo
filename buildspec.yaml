@@ -5,7 +5,7 @@ phases:
       - mvn clean install
       - echo Logging in to Amazon ECR...
       - aws --version
-      - REPOSITORY_URI=767398077316.dkr.ecr.ap-south-1.amazonaws.com/course-ecs-repo
+      - REPOSITORY_URI=767398077316.dkr.ecr.ap-south-1.amazonaws.com/saatvik-ecs-repo
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 767398077316.dkr.ecr.ap-south-1.amazonaws.com
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
