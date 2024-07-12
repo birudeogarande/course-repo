@@ -9,6 +9,9 @@ phases:
       - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 767398077316.dkr.ecr.ap-south-1.amazonaws.com
       - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
+      - CLUSTER_NAME=saatvik-cluster
+      - REGION=ap-south-1
+      - SERVICE_NAME=saatvik-ecs-course-service
   build:
     commands:
       - echo Build started on `date`
@@ -30,7 +33,7 @@ phases:
       - echo $DOCKER_CONTAINER_NAME
       - echo printing imagedefinitions.json
       - cat imagedefinitions.json
-
+      - aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment --region $REGION
 artifacts:
   files:
     - imagedefinitions.json
