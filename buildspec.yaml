@@ -33,8 +33,10 @@ phases:
       - echo $DOCKER_CONTAINER_NAME
       - echo printing imagedefinitions.json
       - cat imagedefinitions.json
-      - aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment --region $REGION --task-definition saatvik-task:1
+#      - aws ecs update-service --cluster $CLUSTER_NAME --service $SERVICE_NAME --force-new-deployment --region $REGION --task-definition saatvik-task:1
 artifacts:
   files:
     - imagedefinitions.json
     - target/course-service.jar
+
+#aws ecs execute-command --region ap-south-1 --cluster saatvik-cluster --task saatvik-task --container saatvik-ecs-repo --command "/bin/bash" --interactive
