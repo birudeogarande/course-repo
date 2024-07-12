@@ -5,7 +5,6 @@ import com.saatvik.course.model.Course;
 import com.saatvik.course.service.CourseService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,9 +17,6 @@ public class CourseController {
     @Autowired
     private CourseService courseService;
 
-    @Value("${JAVA_HOME}")
-    String javaHome;
-
 
 
     @GetMapping("/{courseId}")
@@ -30,8 +26,6 @@ public class CourseController {
 
     @GetMapping("/all")
     public List<Course> getAllCourse()  {
-
-        log.info(javaHome);
         return courseService.findAllCourse();
     }
 
