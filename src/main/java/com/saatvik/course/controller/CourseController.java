@@ -45,11 +45,7 @@ public class CourseController {
     public List<Course> getAllDummyTestCourse()  {
         Random random = new Random(100);
         return List.of(
-                new Course(random.nextInt(),"Java API", random.nextDouble()),
-                new Course(random.nextInt(),"REST API", random.nextDouble()),
-                new Course(random.nextInt(),"JSP", random.nextDouble()),
-                new Course(random.nextInt(),"Spring boot", random.nextDouble())
-
+                new Course(random.nextInt(),"Java API", random.nextDouble())
         );
     }
 
