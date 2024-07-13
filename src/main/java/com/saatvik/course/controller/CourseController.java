@@ -41,16 +41,6 @@ public class CourseController {
         );
     }
 
-    @GetMapping("/dummy/test")
-    public List<Course> getAllDummyTestCourse()  {
-        Random random = new Random(100);
-        return List.of(
-                new Course(random.nextInt(),"Java API", random.nextDouble())
-        );
-    }
-
-
-
     @PutMapping("/update/{courseId}")
     public Course updateCourse(@PathVariable Integer courseId, @RequestBody Course course) throws CourseNotFoundException {
 
