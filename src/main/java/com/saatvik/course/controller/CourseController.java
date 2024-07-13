@@ -36,7 +36,8 @@ public class CourseController {
                 new Course(random.nextInt(),"Java API", random.nextDouble()),
                 new Course(random.nextInt(),"REST API", random.nextDouble()),
                 new Course(random.nextInt(),"JSP", random.nextDouble()),
-                new Course(random.nextInt(),"Spring boot", random.nextDouble())
+                new Course(random.nextInt(),"Spring boot", random.nextDouble()),
+                new Course(random.nextInt(),"Spring boot mirco-service", random.nextDouble())
 
         );
     }
